@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <script type="text/javascript">
+        function confirmd() {
+            return confirmd("确认删除") ? true:false;
+        }
+            
+
+    </script>
+
+</head>
+<body>
+    <h1 align="center">用户信息</h1>
+    <a href="/users/add">添加用户</a>
+    <table border="1" align="center" width="35%">
+        <tr>
+
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>操作</th>
+        </tr>
+
+        <tr th:each="user:${userlist}">
+           <td  th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.age}"></td>
+            <td th:text="${user.address}"></td>
+
+            <td>
+
+                <a th:href="@{/users/findOne(id=${user.id})}">更新用户</a>
+                <a th:href="@{/users/deleteUserById(id=${user.id})}" onclick="confirmd()">删除用户</a>
+            </td>
+
+        </tr>
+
+
+    </table>
+
+</body>
+</html>
